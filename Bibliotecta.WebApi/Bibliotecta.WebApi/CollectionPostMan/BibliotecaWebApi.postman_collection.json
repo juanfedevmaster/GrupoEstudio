@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "209a02c3-3e4a-467f-8623-5ba51cde4e2b",
+		"name": "BibliotecaWebApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38041525"
+	},
+	"item": [
+		{
+			"name": "CrearUser",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"string\",\r\n  \"apellido\": \"string\",\r\n  \"id\": \"string\",\r\n  \"fechaNacimiento\": \"2024-09-28T16:30:07.456Z\",\r\n  \"sexoNacimiento\": true,\r\n  \"fechaDefuncion\": \"2024-09-28T16:30:07.456Z\",\r\n  \"nombreUsuario\": \"string\",\r\n  \"password\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5066/Usuario/api/CrearUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5066",
+					"path": [
+						"Usuario",
+						"api",
+						"CrearUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPersona",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"string\",\r\n  \"apellido\": \"string\",\r\n  \"id\": \"string\",\r\n  \"fechaNacimiento\": \"2024-09-28T16:30:07.456Z\",\r\n  \"sexoNacimiento\": true,\r\n  \"fechaDefuncion\": \"2024-09-28T16:30:07.456Z\",\r\n  \"nombreUsuario\": \"string\",\r\n  \"password\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5066/Usuario/api/ActualizarPersona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5066",
+					"path": [
+						"Usuario",
+						"api",
+						"ActualizarPersona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptenerInformacionUsuario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"string\",\r\n  \"apellido\": \"string\",\r\n  \"id\": \"string\",\r\n  \"fechaNacimiento\": \"2024-09-28T16:30:07.456Z\",\r\n  \"sexoNacimiento\": true,\r\n  \"fechaDefuncion\": \"2024-09-28T16:30:07.456Z\",\r\n  \"nombreUsuario\": \"string\",\r\n  \"password\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5066/Usuario/api/OptenerInformacionUsuario?idUsuario=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5066",
+					"path": [
+						"Usuario",
+						"api",
+						"OptenerInformacionUsuario"
+					],
+					"query": [
+						{
+							"key": "idUsuario",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarUsuario",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"string\",\r\n  \"apellido\": \"string\",\r\n  \"id\": \"string\",\r\n  \"fechaNacimiento\": \"2024-09-28T16:30:07.456Z\",\r\n  \"sexoNacimiento\": true,\r\n  \"fechaDefuncion\": \"2024-09-28T16:30:07.456Z\",\r\n  \"nombreUsuario\": \"string\",\r\n  \"password\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5066/Usuario/api/EliminarUsuario?idUsuario=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5066",
+					"path": [
+						"Usuario",
+						"api",
+						"EliminarUsuario"
+					],
+					"query": [
+						{
+							"key": "idUsuario",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

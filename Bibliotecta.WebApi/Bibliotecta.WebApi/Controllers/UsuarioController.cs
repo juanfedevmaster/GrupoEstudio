@@ -16,10 +16,34 @@ namespace Bibliotecta.WebApi.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/ActualizarPersona")]
         // POST: Usuario/update
         public IActionResult Actualizar([FromBody] Persona usuario)
+        {
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("api/ActualizarPassword")]
+        // POST: Usuario/update
+        public IActionResult ActualizarPassword([FromBody] Usuario usuario)
+        {
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("api/EliminarUsuario")]
+        // POST: Usuario/update
+        public IActionResult EliminarUsuario(string idUsuario)
+        {
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("api/OptenerInformacionUsuario")]
+        // POST: Usuario/update
+        public IActionResult OptenerInformacionUsuario(string idUsuario)
         {
             return Ok();
         }
