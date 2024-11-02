@@ -1,4 +1,5 @@
-﻿using Biblioteca.Entidades.Modelos;
+﻿using Biblioteca.AccesoDatos.Interfaces;
+using Biblioteca.Entidades.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,9 +12,7 @@ namespace Biblioteca.AccesoDatos.Tables
     public class UsuarioDb
     {
         private SqlConnection connection;
-        public UsuarioDb()
-        {
-            var bibliotecaRepo = new BibliotecaRepo();
+        public UsuarioDb(IDatabaseService bibliotecaRepo) {
             connection = bibliotecaRepo.GetSqlConnection();
         }
 

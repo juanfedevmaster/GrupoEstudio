@@ -1,4 +1,7 @@
 
+using Biblioteca.AccesoDatos;
+using Biblioteca.AccesoDatos.Interfaces;
+
 namespace Bibliotecta.WebApi
 {
     public class Program
@@ -13,6 +16,9 @@ namespace Bibliotecta.WebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Inyección de Dependencias
+            builder.Services.AddScoped<IDatabaseService, BibliotecaRepo>();
 
             var app = builder.Build();
 

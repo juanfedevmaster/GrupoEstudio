@@ -1,4 +1,5 @@
-﻿using Biblioteca.AccesoDatos.Tables;
+﻿using Biblioteca.AccesoDatos.Interfaces;
+using Biblioteca.AccesoDatos.Tables;
 using Biblioteca.Entidades.Modelos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,13 @@ namespace Bibliotecta.WebApi.Controllers
     [Route("[controller]")]
     public class UsuarioController : ControllerBase
     {
+        IDatabaseService _bibliotecaRepo;
+
+        public UsuarioController(IDatabaseService bibliotecaRepo)
+        {
+            _bibliotecaRepo = bibliotecaRepo;
+        }
+
         [HttpPost]
         [Route("api/CrearUser")]
         // POST: Usuario/create
@@ -56,7 +64,7 @@ namespace Bibliotecta.WebApi.Controllers
         {
             try
             {
-                UsuarioDb usuarioDb = new UsuarioDb();
+                UsuarioDb usuarioDb = new UsuarioDb(_bibliotecaRepo);
                 var lstUsuarios = usuarioDb.ObtenerUsuarios();
                 return Ok(lstUsuarios);
             }
