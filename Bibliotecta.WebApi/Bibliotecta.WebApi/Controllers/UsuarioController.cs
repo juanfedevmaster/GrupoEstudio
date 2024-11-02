@@ -1,4 +1,5 @@
-﻿using Biblioteca.Entidades.Modelos;
+﻿using Biblioteca.AccesoDatos.Tables;
+using Biblioteca.Entidades.Modelos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,11 +42,28 @@ namespace Bibliotecta.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/OptenerInformacionUsuario")]
+        [Route("api/ObtenerInformacionUsuario")]
         // POST: Usuario/update
-        public IActionResult OptenerInformacionUsuario(string idUsuario)
+        public IActionResult ObtenerInformacionUsuario(string idUsuario)
         {
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("api/ObtenerInformacionDeTodosLosUsuario")]
+        // POST: Usuario/update
+        public IActionResult ObtenerInformacionUsuarios()
+        {
+            try
+            {
+                UsuarioDb usuarioDb = new UsuarioDb();
+                var lstUsuarios = usuarioDb.ObtenerUsuarios();
+                return Ok(lstUsuarios);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
     }
 }
