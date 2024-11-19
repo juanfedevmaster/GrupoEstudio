@@ -1,6 +1,8 @@
 
 using Biblioteca.AccesoDatos;
 using Biblioteca.AccesoDatos.Interfaces;
+using Biblioteca.Entidades.Infraestructura.Options;
+using System.Configuration;
 
 namespace Bibliotecta.WebApi
 {
@@ -19,6 +21,9 @@ namespace Bibliotecta.WebApi
 
             // Inyección de Dependencias
             builder.Services.AddScoped<IDatabaseService, BibliotecaRepo>();
+
+            // Patron IOptions
+            builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection("DatabaseOptions"));
 
             var app = builder.Build();
 

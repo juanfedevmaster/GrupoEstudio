@@ -1,8 +1,11 @@
 ﻿using Biblioteca.AccesoDatos.Interfaces;
 using Biblioteca.AccesoDatos.Tables;
+using Biblioteca.Entidades.Infraestructura.Options;
 using Biblioteca.Entidades.Modelos;
+using Bibliotecta.Negocio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Bibliotecta.WebApi.Controllers
 {
@@ -18,17 +21,19 @@ namespace Bibliotecta.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("api/CrearUser")]
+        [Route("api/CrearUsuario")]
         // POST: Usuario/create
         public IActionResult Crear([FromBody] Usuario usuario)
         {
-            return Ok();
+            var usuarioServicio = new UsuarioServicio(_bibliotecaRepo);
+            usuarioServicio.CrearServicio(usuario);
+            return Ok(usuarioServicio);
         }
 
         [HttpPut]
-        [Route("api/ActualizarPersona")]
+        [Route("api/ActualizarUsuario")]
         // POST: Usuario/update
-        public IActionResult Actualizar([FromBody] Persona usuario)
+        public IActionResult Actualizar([FromBody] Usuario usuario)
         {
             return Ok();
         }
@@ -52,9 +57,18 @@ namespace Bibliotecta.WebApi.Controllers
         [HttpGet]
         [Route("api/ObtenerInformacionUsuario")]
         // POST: Usuario/update
-        public IActionResult ObtenerInformacionUsuario(string idUsuario)
+        public IActionResult ObtenerInformacionUsuario(string nombreUsuario)
         {
-            return Ok();
+            try
+            {
+                UsuarioDb usuarioDb = new UsuarioDb(_bibliotecaRepo);
+                var usuario = usuarioDb.ObtenerUsuario(nombreUsuario);
+                return Ok(new { mensaje = "El usuario se creo de forma correcta " });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { mensaje = ex.Message });
+            }
         }
 
         [HttpGet]

@@ -6,10 +6,7 @@ namespace Biblioteca.Entidades.Modelos
 {
     public class Usuario : Persona 
     {
-        public int Id { get; set; }
-        public string? Nombre { get; set; }
-        public string? Apellido { get; set; }
-        public double? Celular { get; set; }
+        public string? Celular { get; set; }
         public string? UsuarioValue { get; set; }
         public string? Password { get; set; }
     }

@@ -1,13 +1,21 @@
 ﻿using Biblioteca.AccesoDatos.Interfaces;
+using Biblioteca.Entidades.Infraestructura.Options;
+using Microsoft.Extensions.Options;
 using System.Data.SqlClient;
 
 namespace Biblioteca.AccesoDatos
 {
     public class BibliotecaRepo : IDatabaseService, IDisposable
     {
-        private const string connection = "Server=JUANFE;Database=Biblioteca;User Id=sa;Password=admin;TrustServerCertificate=True;";
+        //private const string connection = "Server=JUANFE;Database=Biblioteca;User Id=sa;Password=admin;TrustServerCertificate=True;";
+        
         private SqlConnection sqlConnection;
-        public BibliotecaRepo() { }
+
+        private readonly string _connectionString;
+
+        public BibliotecaRepo(IOptions<DatabaseOptions> options) {
+            _connectionString = options.Value.ConnectionString;
+        }        
 
         public void Dispose()
         {
@@ -16,7 +24,7 @@ namespace Biblioteca.AccesoDatos
 
         public SqlConnection GetSqlConnection()
         {
-            this.sqlConnection = new SqlConnection(connection);
+            this.sqlConnection = new SqlConnection(_connectionString);
             return sqlConnection;
         }
     }
