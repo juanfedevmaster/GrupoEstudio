@@ -7,10 +7,7 @@ namespace Biblioteca.AccesoDatos
 {
     public class BibliotecaRepo : IDatabaseService, IDisposable
     {
-        //private const string connection = "Server=JUANFE;Database=Biblioteca;User Id=sa;Password=admin;TrustServerCertificate=True;";
-        
         private SqlConnection sqlConnection;
-
         private readonly string _connectionString;
 
         public BibliotecaRepo(IOptions<DatabaseOptions> options) {
