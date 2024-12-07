@@ -21,10 +21,11 @@ namespace Bibliotecta.Negocio
         public bool CrearServicio(Usuario usuario) {
             UsuarioDb usuarioDb = new UsuarioDb(_bibliotecaRepo);
 
-            if (usuarioDb.ObtenerUsuario(usuario.UsuarioValue) != null) {
+            if (usuarioDb.ObtenerUsuario(usuario.CorreoElectronico) != null) {
                 throw new Exception($"El usuario ya existe");
             }
-            
+
+            usuarioDb = new UsuarioDb(_bibliotecaRepo);
             var exito = usuarioDb.CrearUsuario(usuario);
             return exito;
         }

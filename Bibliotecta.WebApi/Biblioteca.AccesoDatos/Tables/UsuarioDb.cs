@@ -1,11 +1,6 @@
 ﻿using Biblioteca.AccesoDatos.Interfaces;
 using Biblioteca.Entidades.Modelos;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Biblioteca.AccesoDatos.Tables
 {
@@ -25,16 +20,25 @@ namespace Biblioteca.AccesoDatos.Tables
                 {
                     connection.Open();
                     Console.WriteLine("Conexión abierta correctamente.");
-                    using (SqlCommand command = new SqlCommand("CreacionUsuario", connection))
+                    using (SqlCommand command = new SqlCommand("CrearUsuario", connection))
                     {
                         command.CommandType = System.Data.CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@apellido", usuario.Apellido);
-                        command.Parameters.AddWithValue("@nombre", usuario.Nombre);
-                        command.Parameters.AddWithValue("@celular", usuario.Celular);
-                        command.Parameters.AddWithValue("@usuario", usuario.UsuarioValue);
-                        command.Parameters.AddWithValue("@password", usuario.Password);
 
-                        int rowsAffected = command.ExecuteNonQuery();
+                        // Ejemplo de Parametros en ADO.NET
+                        //command.Parameters.Add(new SqlParameter("@identificacion",System.Data.SqlDbType.Int).Value = usuario.Nombre);
+                        //command.Parameters.Add(new SqlParameter("@nombre", System.Data.SqlDbType.NVarChar,50).Value = usuario.Nombre);
+
+                        command.Parameters.AddWithValue("@identificacion", usuario.Id);
+                        command.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                        command.Parameters.AddWithValue("@apellido", usuario.Apellido);
+                        command.Parameters.AddWithValue("@celular", usuario.Celular);
+                        command.Parameters.AddWithValue("@fechaNacimiento", usuario.FechaNacimiento);
+                        command.Parameters.AddWithValue("@fechaDefuncion", usuario.FechaDefuncion);
+                        command.Parameters.AddWithValue("@correoElectronico", usuario.CorreoElectronico);
+                        command.Parameters.AddWithValue("@password", usuario.Password);
+                        command.Parameters.AddWithValue("@IdRol", usuario.IdRol);
+
+                        var rowsAffected = command.ExecuteNonQuery();
 
                         return rowsAffected > 0 ? true : false;
                     }
@@ -72,7 +76,7 @@ namespace Biblioteca.AccesoDatos.Tables
                                     Apellido = reader["Apellido"].ToString(),
                                     Celular = reader["Celular"].ToString(),
                                     Password = reader["Password"].ToString(),
-                                    UsuarioValue = reader["Usuario"].ToString()
+                                    CorreoElectronico = reader["Usuario"].ToString()
                                 };
 
                                 lstUsuarios.Add(user);
@@ -108,7 +112,7 @@ namespace Biblioteca.AccesoDatos.Tables
                     {
                         command.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                        command.Parameters.AddWithValue("@correoElectronico", nombreUsuario);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -116,12 +120,11 @@ namespace Biblioteca.AccesoDatos.Tables
                             {
                                 usuario = new Usuario()
                                 {
-                                    Id = Convert.ToInt32(reader["ID"]),
-                                    Nombre = reader["Nombre"].ToString(),
-                                    Apellido = reader["Apellido"].ToString(),
-                                    Celular = reader["Celular"].ToString(),
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    CorreoElectronico = reader["CorreoElectronico"].ToString(),
                                     Password = reader["Password"].ToString(),
-                                    UsuarioValue = reader["Usuario"].ToString()
+                                    Celular = reader["Celular"].ToString(),
+                                    IdRol = Convert.ToInt32(reader["IdRol"].ToString())
                                 };
                             }
                         }
@@ -135,9 +138,6 @@ namespace Biblioteca.AccesoDatos.Tables
                     throw new Exception($"Error en la base de datos: {ex.Message} - {ex.InnerException}");
                 }
             }
-
-            connection.Close();
-            connection.Dispose();
 
             return usuario;
         }

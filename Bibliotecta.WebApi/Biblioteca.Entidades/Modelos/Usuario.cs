@@ -6,8 +6,8 @@ namespace Biblioteca.Entidades.Modelos
 {
     public class Usuario : Persona 
     {
-        public string? Celular { get; set; }
-        public string? UsuarioValue { get; set; }
+        public string? CorreoElectronico { get; set; }
         public string? Password { get; set; }
+        public int IdRol { get; set; }
     }
 }

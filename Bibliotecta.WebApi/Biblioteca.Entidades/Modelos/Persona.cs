@@ -8,10 +8,10 @@ namespace Biblioteca.Entidades.Modelos
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public int Id { get; set; }
+        public Int64 Id { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public bool Sexo { get; set; }
         public DateTime? FechaDefuncion { get; set; }
+        public string Celular { get; set; }
 
     }
 }
