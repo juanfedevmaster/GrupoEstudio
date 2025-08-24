@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploInyeccionDependencias", "EjemploInyeccionDependencias\EjemploInyeccionDependencias.csproj", "{65FCC1FB-ECCE-49F2-8863-72BB4F400B75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{4E4A5E51-AF49-40F1-BC07-EA3BFBB91A6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65FCC1FB-ECCE-49F2-8863-72BB4F400B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65FCC1FB-ECCE-49F2-8863-72BB4F400B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65FCC1FB-ECCE-49F2-8863-72BB4F400B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65FCC1FB-ECCE-49F2-8863-72BB4F400B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4A5E51-AF49-40F1-BC07-EA3BFBB91A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4A5E51-AF49-40F1-BC07-EA3BFBB91A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4A5E51-AF49-40F1-BC07-EA3BFBB91A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4A5E51-AF49-40F1-BC07-EA3BFBB91A6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
